@@ -1,4 +1,5 @@
-const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
+// Evita URLs com barra final, que gerariam uma rota inválida como "//auth/v1".
+const url = process.env.NEXT_PUBLIC_SUPABASE_URL?.replace(/\/+$/, "");
 const anonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
 export const supabaseConfig = url && anonKey ? { url, anonKey } : null;
